@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Текущий пользователь - {{ user.username }}</h1>
+    <h1>Версия сервера {{ server }}</h1>
+    <img src="{%  static 'todo/todolist.jpg' %}" alt="Welcome image"
+</body>
+</html>
