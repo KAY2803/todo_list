@@ -4,4 +4,6 @@ from todo.models import ToDoList
 
 @admin.register(ToDoList)
 class ToDoListAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('status', 'importance', 'public',)
+
+

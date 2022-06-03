@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path, include
+from django.urls import path
+
 from todo import views
 
 
 urlpatterns = [
     path('notes/', views.NoteListCreateAPIView.as_view()),
     path('notes/<int:pk>', views.NoteDetailUpdateDeleteAPIView.as_view()),
+    path('comments/', views.CommentListCreateAPIView.as_view()),
+    path('about/', views.AboutTemplateView.as_view()),
 ]
