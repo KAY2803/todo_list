@@ -33,16 +33,7 @@ class NoteDetailUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     """Класс представления для вывода данных о конкретной заметке, ее изменения и удаления"""
     queryset = ToDoList.objects.all()
     serializer_class = serializers.NoteSerializer
-    permission_classes = [IsAuthenticated & permissions.GetPublicNote]
-
-    def perform_update(self, serializer):
-        """Переопределение метода update, которым изменения разрешено вносить только автору заметки"""
-        author = self.get_object().author_id
-        user = self.request.user.id
-        if author == user:
-            serializer.save()
-            return serializer
-        raise PermissionError('Недостаточно прав для внесения изменений')
+    permission_classes = [IsAuthenticated & permissions.UpdateDelNote]
 
 
 class CommentListCreateAPIView(generics.ListCreateAPIView):

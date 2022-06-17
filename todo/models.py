@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+def get_next_date():
+    next_daytime = datetime.datetime.now() + datetime.timedelta(days=1)
+    next_daytime.replace()
+    return next_daytime
+
+
 class ToDoList(models.Model):
     """Класс модели ToDoList"""
 
@@ -21,8 +27,8 @@ class ToDoList(models.Model):
     status = models.IntegerField(choices=NoteStatus.choices, default=1, verbose_name='Статус')
     importance = models.BooleanField(default=False, verbose_name='Важно')
     public = models.BooleanField(default=False, verbose_name='Публичная')
-    note_date = models.DateTimeField(default=(datetime.datetime.now() + datetime.timedelta(days=1)),
-                                     verbose_name='Дата и время'
+    note_date = models.DateTimeField(default=get_next_date,
+                                     verbose_name='Выполнить до'
                                      )
 
 
